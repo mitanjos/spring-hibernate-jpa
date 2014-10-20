@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:recommendations="http://www.mycompany.com/schema/recommendations"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.2.xsd
+        http://www.mycompany.com/schema/recommendations http://www.mycompany.com/schema/recommendations.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:component-scan base-package="com.techcielo.sampleproject" />
+
+
+	<bean id="empSvc" class="com.techcielo.sampleproject.service.EmployeeService">
+		<property name="empDao" ref="empDao"></property>
+	</bean>
+	
+	<bean id="contextMapFactory" class="com.techcielo.sampleproject.dao.CustomEntityManagerFactory"/>
+
+	<bean id="empDao" class="com.techcielo.sampleproject.dao.EmployeeDAO" />
+
+	<tx:annotation-driven transaction-manager="transactionManager-sg" />
+
+	<!-- Singapore Data -->
+	<bean id="transactionManager-sg" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory-sg" />
+		<property name="dataSource" ref="dataSource-sg" />
+	</bean>
+
+	<bean id="entityManagerFactory-sg"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="config/persistence-sg.xml"></property>
+		<property name="dataSource" ref="dataSource-sg" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+	</bean>
+
+	<bean id="dataSource-sg"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/northwind" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+
+	<!-- Taiwan Data -->
+	<bean id="transactionManager-tw" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory-tw" />
+	</bean>
+	<bean id="entityManagerFactory-tw"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="config/persistence-tw.xml"></property>
+		<property name="dataSource" ref="dataSource-tw" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+	</bean>
+	<bean id="dataSource-tw"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/northwind_dup" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+</beans>
