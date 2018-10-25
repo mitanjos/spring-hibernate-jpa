@@ -1,11 +1,9 @@
 package com.techcielo.sampleproject.service.test;
 
+import com.techcielo.sampleproject.service.EmployeeService;
+import junit.framework.TestCase;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.techcielo.sampleproject.service.EmployeeService;
-
-import junit.framework.TestCase;
 
 public class EmpServiceTest extends TestCase{
 

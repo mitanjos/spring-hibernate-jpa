@@ -1,12 +1,11 @@
 package com.techcielo.sampleproject.dao;
 
-import javax.persistence.EntityManager;
-
+import com.techcielo.sampleproject.bean.EmployeeBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.techcielo.sampleproject.bean.EmployeeBean;
+import javax.persistence.EntityManager;
 
 @Transactional
 public class EmployeeDAO {

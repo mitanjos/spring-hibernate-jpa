@@ -1,10 +1,9 @@
 package com.techcielo.sampleproject.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.techcielo.sampleproject.bean.EmployeeBean;
 import com.techcielo.sampleproject.dao.EmployeeDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 @Component

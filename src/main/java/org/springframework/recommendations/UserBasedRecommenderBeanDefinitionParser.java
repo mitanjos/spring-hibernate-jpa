@@ -1,13 +1,13 @@
 package org.springframework.recommendations;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.AbstractBeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.springframework.util.xml.DomUtils;
 import org.w3c.dom.Element;
+
+import java.util.ArrayList;
 
 public class UserBasedRecommenderBeanDefinitionParser extends AbstractBeanDefinitionParser{
 
