@@ -24,5 +24,6 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version:'5.1.33'
     compile group: 'org.hibernate', name: 'hibernate-core', version:'4.3.6.Final'
     compile group: 'org.hibernate', name: 'hibernate-entitymanager', version:'4.3.6.Final'
-    compile group: 'org.springframework', name: 'spring-jpa', version:'2.0.8'
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.1.RELEASE'
+
 }
